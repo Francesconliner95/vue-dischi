@@ -7,7 +7,7 @@ var app = new Vue({
         categories: 'All',
         },
     methods: {
-        yearOrder: function(){
+        Order: function(){
             /*Clono l'array discs attraverso la funzione map*/
             this.order_discs = this.discs.map((element, index) => {
                 return element;
@@ -29,6 +29,8 @@ var app = new Vue({
                     }
                 }
             }
+        },
+        yearOrder: function(){
             /*ogni volta che premo il pulsante mi inverte lo stato da orinato a non ordinato, mostrandomi il relativo array*/
             this.is_order=!this.is_order;
         },
@@ -40,6 +42,7 @@ var app = new Vue({
                 .then(function(risposta) {
                     console.log(risposta);
                     app.discs=risposta.data.response;
+                    app.Order();
                 });
 
 
