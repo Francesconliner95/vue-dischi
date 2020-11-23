@@ -21,10 +21,21 @@
                         <option>Rock</option>
                     </select>
                 </div>
-                <button type="button" name="button" @click="yearOrder">Ordina</button>
+                <button type="button" name="button" @click="yearOrder">{{is_order==true? 'Ordina per preferiti': 'Ordina per anno' }}</button>
             </header>
             <main>
-                <div v-if="disc.genre == categories || categories == 'All'" class="discs" v-for="disc in discs">
+                <div v-if="disc.genre == categories || categories == 'All'" class="discs" :class="is_order==true? 'd-none': '' " v-for="disc in discs">
+                    <div class="top">
+                        <img :src="disc.poster" alt="">
+                    </div>
+                    <div class="bottom">
+                        <p>{{disc.title}}</p>
+                        <p>{{disc.author}}</p>
+                        <p>{{disc.genre}}</p>
+                        <p>{{disc.year}}</p>
+                    </div>
+                </div>
+                <div v-if="disc.genre == categories || categories == 'All'" class="discs" :class="is_order==true? '': 'd-none' " v-for="disc in order_discs">
                     <div class="top">
                         <img :src="disc.poster" alt="">
                     </div>
