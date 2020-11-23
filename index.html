@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" charset="utf-8"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id=root>
+            <header>
+                <div class="categories">
+                    <h3>Categories</h3>
+                    <select name="categories" id="categories_input" v-model="categories">
+                        <option>All</option>
+                        <option>Pop</option>
+                        <option>Jazz</option>
+                        <option>Metal</option>
+                        <option>Rock</option>
+                    </select>
+                </div>
+                <button type="button" name="button" @click="yearOrder">Ordina</button>
+            </header>
+            <main>
+                <div v-if="disc.genre == categories || categories == 'All'" class="discs" v-for="disc in discs">
+                    <div class="top">
+                        <img :src="disc.poster" alt="">
+                    </div>
+                    <div class="bottom">
+                        <p>{{disc.title}}</p>
+                        <p>{{disc.author}}</p>
+                        <p>{{disc.genre}}</p>
+                        <p>{{disc.year}}</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <script src="main.js" charset="utf-8"></script>
+    </body>
+</html>
